@@ -8,8 +8,13 @@ public class Board {
 	private Player playerX;
 	private Player playerO;
 	private Player currentPlayer;
+	private Player changePlayer;
 
 	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public Player getChangePlayer() {
 		return currentPlayer;
 	}
 
@@ -68,6 +73,7 @@ public class Board {
 	}
 
 	private void changeCurrentPlayer() {
+		changePlayer = currentPlayer;
 		if (currentPlayer == playerX) {
 			currentPlayer = playerO;
 		} else {
@@ -82,8 +88,6 @@ public class Board {
 		return true;
 	}
 
-
-
 	private boolean isEmployed(int x, int y) {
 		if (board[x][y] != '|') {
 			return false;
@@ -91,19 +95,14 @@ public class Board {
 		return true;
 	}
 
-	public char calculateWinner() {
-		char winner = (currentPlayer.getType() == 'X') ? 'O' : 'X';
-		return winner;
+	public Player calculateWinner() {
+		// char winner = (currentPlayer.getType() == 'X') ? 'O' : 'X';
+		return changePlayer;
 	}
 
-	public char calculateLoser() {
-		char loser = (currentPlayer.getType() != 'X') ? 'O' : 'X';
-		return loser;
+	public Player calculateLoser() {
+		// char loser = (currentPlayer.getType() != 'X') ? 'O' : 'X';
+		return currentPlayer;
 	}
-//	public void winner() {
-//		if (gameFinished()) {
-//			char winner = (currentPlayer.getType() == 'X') ? 'O' : 'X';
-//			System.out.println("The winner is " + winner + " !!!");
-//		}
-//	}
+
 }

@@ -11,9 +11,18 @@ public class Statistics {
 		results.add(result);
 	}
 
-	public void printStatistics() {
-		for (GameResult res : results) {
-			System.out.println(res);
+	// public void printStatistics() {
+	// for (int i = 0; i < results.size(); i++) {
+	// GameResult stat = results.get(i);
+	// System.out.println(results);
+	// }
+	// }
+
+	public String toString() {
+		String printRes = "";
+		for (GameResult gameResult : results) {
+			printRes += gameResult.toString() + '\n';
 		}
+		return printRes;
 	}
 }

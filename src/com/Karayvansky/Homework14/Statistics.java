@@ -11,18 +11,20 @@ public class Statistics {
 		results.add(result);
 	}
 
-	// public void printStatistics() {
-	// for (int i = 0; i < results.size(); i++) {
-	// GameResult stat = results.get(i);
-	// System.out.println(results);
-	// }
-	// }
-
 	public String toString() {
 		String printRes = "";
-		for (GameResult gameResult : results) {
+		for (int i = 0; i < results.size(); i++) {
+			GameResult gameResult = results.get(i);
 			printRes += gameResult.toString() + '\n';
 		}
 		return printRes;
 	}
+
+	// public String toString() {
+	// String printRes = "";
+	// for (GameResult gameResult : results) {
+	// printRes += gameResult.toString() + '\n';
+	// }
+	// return printRes;
+	// }
 }

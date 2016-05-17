@@ -8,16 +8,16 @@ public class Game {
 		System.out.println("Click any button to begin game!");
 		Statistics statistics = new Statistics();
 		while (!input().equals("exit")) {
-			board();
-			printBoard(board());
-			while (!board().gameFinished()) {
-				outMove(board());
+			Board board = board();
+			printBoard(board);
+			while (!board.gameFinished()) {
+				outMove(board);
 			}
-			outWinner(board());
-			resultWinner(board());
-			resultLoser(board());
-			statistics.addResult(resultWinner(board()));
-			statistics.addResult(resultLoser(board()));
+			outWinner(board);
+			resultWinner(board);
+			resultLoser(board);
+			statistics.addResult(resultWinner(board));
+			statistics.addResult(resultLoser(board));
 			outGameMenu();
 			if (input().equals("stat")) {
 				System.out.println(statistics);
@@ -33,23 +33,18 @@ public class Game {
 	}
 
 	public static Player playerX() {
-		Player playerX = new Human();
-		playerX.setFirstName("Petrov");
-		playerX.setMiddleName("Petr");
+		Player playerX = new Human("Ivanov", "Ivan", "Petrovich", 25, 'X');
 		return playerX;
 	}
 
 	public static Player playerO() {
-		Player playerO = new AI();
-		playerO.setFirstName("Nikilaev");
-		playerO.setMiddleName("Ivan");
+		Player playerO = new AI("Petrov", "Petr", "Petrovich", 35, 'O');
 		return playerO;
 	}
 
 	public static Board board() {
 		Board board = new Board(playerX(), playerO());
 		return board;
-
 	}
 
 	public static void printBoard(Board board) {

@@ -56,10 +56,12 @@ public class Board {
 
 		if (board[2][0] == elem && board[1][1] == elem && board[0][2] == elem)
 			return true;
+
 		return false;
 	}
 
-	public boolean makeMove(String move) {
+	public boolean makeMove() {
+		String move = currentPlayer.makeMove();
 		int x = Character.getNumericValue(move.charAt(0));
 		int y = Character.getNumericValue(move.charAt(1));
 

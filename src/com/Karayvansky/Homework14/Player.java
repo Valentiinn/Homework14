@@ -1,6 +1,6 @@
 package com.Karayvansky.Homework14;
 
-public class Player {
+public abstract class  Player {
 
 	private String firstName;
 	private String lastName;
@@ -28,4 +28,5 @@ public class Player {
 	public String toString() {
 		return firstName + " " + lastName;
 	}
+	public abstract String makeMove();
 }

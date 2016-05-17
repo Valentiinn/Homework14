@@ -8,28 +8,17 @@ public class Game {
 		System.out.println("Click any button to begin game!");
 		Statistics statistics = new Statistics();
 		while (!input().equals("exit")) {
-			System.out.println("Game started...");
 			Board board = new Board(playerX(), playerO());
-			board.printBoard();
+			cratedBoard(board);
 			while (!board.gameFinished()) {
-				System.out.println();
-				System.out.println("Player " + board.getCurrentPlayer() + "!" + " Moves...");
-				System.out.print("Enter yout move: ");
-				String move = input();
-				if (!board.makeMove(move)) {
-					System.out.println("Input was incorect.Select your move. ");
-				}
-				board.printBoard();
+				outMove(board);
 			}
-			System.out.println();
-			System.out.println("Winner is " + board.calculateWinner());
-			GameResult resultWinner = new GameResult(board.calculateWinner(), "winn");
-			GameResult resultLoser = new GameResult(board.calculateLoser(), "lost");
-			statistics.addResult(resultWinner);
-			statistics.addResult(resultLoser);
-			System.out.println("Click any button to begin game!");
-			System.out.println("If you want to exit the game, print the exit");
-			System.out.println("If you want to show statistics, print the stat");
+			outWinner(board);
+			resultWinner(board);
+			resultLoser(board);
+			statistics.addResult(resultWinner(board));
+			statistics.addResult(resultLoser(board));
+			outGameMenu();
 			if (input().equals("stat")) {
 				System.out.println(statistics);
 			}
@@ -44,13 +33,50 @@ public class Game {
 	}
 
 	public static Player playerX() {
-		Player playerX = new Player("Ivanov", "Ivan", "Petrovich", 25, 'X');
+		Player playerX = new Human("Ivanov", "Ivan", "Petrovich", 25, 'X');
 		return playerX;
 	}
 
 	public static Player playerO() {
-		Player playerO = new Player("Petrov", "Petr", "Petrovich", 35, 'O');
+		Player playerO = new AI("Petrov", "Petr", "Petrovich", 35, 'O');
 		return playerO;
+	}
+
+	public static void cratedBoard(Board board) {
+		System.out.println("Game started...");
+		board = new Board(playerX(), playerO());
+		board.printBoard();
+	}
+
+	public static void outMove(Board board) {
+		System.out.println();
+		System.out.println("Player " + board.getCurrentPlayer() + "!" + " Moves...");
+		System.out.println("Enter yout move: ");
+		if (!board.makeMove()) {
+			System.out.println("Input was incorect.Select your move. ");
+		}
+		board.printBoard();
+	}
+
+	public static void outWinner(Board board) {
+		System.out.println();
+		System.out.println("Winner is " + board.calculateWinner());
+	}
+
+	public static void outGameMenu() {
+		System.out.println("Click any button to begin game!");
+		System.out.println("If you want to exit the game, print the exit");
+		System.out.println("If you want to show statistics, print the stat");
+	}
+
+	public static GameResult resultWinner(Board board) {
+		GameResult resultWinner = new GameResult(board.calculateWinner(), "winn");
+		return resultWinner;
+	}
+
+	public static GameResult resultLoser(Board board) {
+		GameResult resultLoser = new GameResult(board.calculateLoser(), "lost");
+		return resultLoser;
 	}
 
 }

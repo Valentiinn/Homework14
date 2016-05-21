@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Human extends Player {
 
-	public Human(String firstName, String lastName, String middleName, int age, char type) {
-		super(firstName, lastName, middleName, age, type);
+	public Human(String firstName, char type) {
+		super(firstName, type);
 	}
 
 	public String makeMove() {

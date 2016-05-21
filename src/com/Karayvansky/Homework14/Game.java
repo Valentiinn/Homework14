@@ -6,7 +6,7 @@ public class Game {
 
 	public static void main(String[] args) {
 		System.out.println("Click any button to begin game!");
-		Statistics statistics = new Statistics();
+		Statistics statistics = Statistics.getInstance();
 		while (!input().equals("exit")) {
 			Board board = board();
 			printBoard(board);
@@ -33,12 +33,16 @@ public class Game {
 	}
 
 	public static Player playerX() {
-		Player playerX = new Human("Ivanov", "Ivan", "Petrovich", 25, 'X');
+		Player playerX = new Human("Ivanov", 'X');
+		playerX.setLastName("Ivan");
+		// playerX.setType('X');
 		return playerX;
 	}
 
 	public static Player playerO() {
-		Player playerO = new AI("Petrov", "Petr", "Petrovich", 35, 'O');
+		Player playerO = new AI("Petrov", 'O');
+		playerO.setLastName("Petr");
+		// playerO.setType('O');
 		return playerO;
 	}
 

@@ -4,6 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Statistics {
+	private static Statistics instance = null;
+
+	private Statistics() {
+
+	}
+
+	public static Statistics getInstance() {
+		if (instance == null) {
+			instance = new Statistics();
+		}
+
+		return instance;
+	}
 
 	private List<GameResult> results = new ArrayList<GameResult>();
 
@@ -20,11 +33,4 @@ public class Statistics {
 		return printRes;
 	}
 
-	// public String toString() {
-	// String printRes = "";
-	// for (GameResult gameResult : results) {
-	// printRes += gameResult.toString() + '\n';
-	// }
-	// return printRes;
-	// }
 }

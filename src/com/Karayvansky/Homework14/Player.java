@@ -39,16 +39,18 @@ public abstract class Player {
 		if (obj == null) {
 			return false;
 		}
-		if (obj instanceof Player) {
-			Player player = (Player) obj;
-			if (this.firstName == null || this.getLastName() == null) {
-				return false;
-			}
-			if (this.firstName.equals(player.firstName) && this.getLastName().equals(player.getLastName())
-					&& this.type == player.type) {
-				return true;
-			}
+		if (obj.getClass() != Player.class) {
+			return false;
 		}
+		Player player = (Player) obj;
+		if (this.firstName == null || this.getLastName() == null) {
+			return false;
+		}
+		if (this.firstName.equals(player.firstName) && this.getLastName().equals(player.getLastName())
+				&& this.type == player.type) {
+			return true;
+		}
+
 		return false;
 	}
 
